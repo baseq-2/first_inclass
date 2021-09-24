@@ -28,7 +28,10 @@ void main()
 {
     // initialize max value
     int max = 10;
-    int user_input, answer;
+
+    // declare user_input
+    int user_input;
+    
     // initialize time  
     time_t t;
 
