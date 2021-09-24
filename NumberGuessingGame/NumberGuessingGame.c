@@ -21,17 +21,31 @@
  * Returns the valid input.
  * 
  */
+
 void playGame(int max);
 int setValidMax();
 
 void main()
 {
-    // initialize max value
-    int max = 10;
-
+    // initialize max value. If settings file exists, read max value. If it doesn't, create new file with default max.
+    int max;
+    FILE *fp;
+    if(fp = fopen("settings.txt", "r")) 
+    {
+        fscanf(fp, "%d", &max);
+    }
+    else
+    {
+        fclose(fp);
+        fp = fopen("settings.txt", "w+");
+        max = 10;
+        fprintf(fp, "%d", max);
+    }
+    fclose(fp);
+    
     // declare user_input
     int user_input;
-    
+
     // initialize time  
     time_t t;
 
@@ -50,8 +64,11 @@ void main()
             case 1: // play the guessing game
                 playGame(max);
                 break;
-            case 2: // set max value
+            case 2: // set max value 
                 max = setValidMax();
+                fp = fopen("settings.txt", "w+");
+                fprintf(fp, "%d", max);
+                fclose(fp);
                 break;
             case 3: // quit game
                 break;
