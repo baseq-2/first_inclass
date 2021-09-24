@@ -17,6 +17,8 @@
  * If user inputs "q", go back to menu
  * 
  * [Set valid max]
+ * Loops getting user input until it is a valid maximum int for the game.
+ * Returns the valid input.
  * 
  */
 void playGame(int max);
@@ -60,7 +62,11 @@ void main()
 }
 
 /**
+ * playGame -       Until they are correct, the user guesses what the correct random number is, 
+ *                  and gets hints when wrong. If the user enters "q", returns to the menu.
  * 
+ * @param   max     the maxmimum random number possible for the game
+ * @return  void
  */
 void playGame(int max)
 {
@@ -97,6 +103,12 @@ void playGame(int max)
     printf("\nCongratulations! You won! The answer was %d.\n\n", answer);
 }
 
+/**
+ * setValidMax -    Until a valid number is entered, the user inputs the desired maximum 
+ *                  possible integer that can be generated in the game.
+ * 
+ * @return          the first valid maximum number the user enters
+ */
 int setValidMax()
 {
     int newMax;
